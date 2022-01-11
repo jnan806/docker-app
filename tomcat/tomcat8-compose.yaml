@@ -1,0 +1,14 @@
+version: '3.5'
+services:
+  nginx:
+    container_name: tomcat8.5
+    image: tomcat:8.5-jdk8
+    #command: 
+    restart: always
+    user: root
+    environment:
+      TZ: Asia/Shanghai
+    ports:
+      - 10000:8080
+    volumes:
+      - ./volume/webapps:/usr/local/tomcat/webapps

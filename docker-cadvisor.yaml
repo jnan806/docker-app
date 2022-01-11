@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+  docker-cadvisor:
+    container_name: docker-cadvisor
+    image: google/cadvisor:v0.33.3
+    restart: always
+    #user: root
+    ports:
+      - 17070:8080
+    volumes:
+      - '/:rootfs:ro'
+      - '/var/run:/var/run:ro'
+      - '/sys:/sys:ro'
+      - '/var/lib/docker:/var/lib/docker:ro'
+      - '/dev/disk:/dev/disk:ro'

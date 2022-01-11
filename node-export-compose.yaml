@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+  node-exporter:
+    container_name: node-exporter
+    image: prom/node-exporter:v1.0.1
+    restart: always
+    #user: root
+    environment:
+      TZ: Asia/Shanghai
+    ports:
+      - 19100:19100
+    #volumes:
+    #  - './volumes/node-exporter/proc:/host/proc:ro'
+    #  - './volumes/node-exporter/sys:/host/sys:ro'
+    #  - './volumes/node-exporter:/rootfs:ro'

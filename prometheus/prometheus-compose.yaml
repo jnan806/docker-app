@@ -1,0 +1,13 @@
+version: '3.5'
+services:
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v2.20.1
+    restart: always
+    user: root
+    environment:
+      TZ: Asia/Shanghai
+    ports:
+      - 19090:9090
+    volumes:
+      - ./volume/conf/prometheus.yml:/etc/prometheus/prometheus.yml

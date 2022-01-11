@@ -1,0 +1,18 @@
+version: '3.5'
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:1.18.0
+    #command: 
+    restart: always
+    user: root
+    environment:
+      TZ: Asia/Shanghai
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./volume/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./volume/ssl:/etc/nginx/ssl
+      - ./volume/conf/conf.d:/etc/nginx/conf.d
+      - ./volume/wwwroot:/usr/share/nginx/wwwroot

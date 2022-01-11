@@ -1,0 +1,80 @@
+version: '3.5'
+services:
+  redis-master:
+    container_name: redis-master
+    image: redis:6.0
+    command: redis-server /usr/local/etc/redis/conf/redis.conf  #--requirepass redis
+    restart: always
+    user: root
+    environment:
+      TZ: Asia/Shanghai
+    ports:
+      - 63790:6379
+    volumes:
+      - ./volume/conf:/usr/local/etc/redis/conf
+      - ./volume/master/data:/data
+
+#  redis-slave1:
+#    container_name: redis-slave1
+#    image: redis:6.0
+#    command: redis-server --slaveof redis-master 6379
+#    restart: always
+#    user: root
+#    environment:
+#      TZ: Asia/Shanghai
+#    ports:
+#      - 6380:6379
+#    volumes:
+#      - ./volume/slave1/data:/data
+#
+#  redis-slave2:
+#    container_name: redis-slave2
+#    image: redis:6.0
+#    command: redis-server --slaveof redis-master 6379
+#    restart: always
+#    user: root
+#    environment:
+#      TZ: Asia/Shanghai
+#    ports:
+#      - 6381:6379
+#    volumes:
+#      - ./volume/slave2/data:/data
+#
+#  redis-master-sentinel:
+#    container_name: redis-master-sentinel
+#    image: redis:6.0
+#    command: redis-sentinel /usr/local/etc/redis/conf/redis-master-sentinel.conf
+#    restart: always
+#    user: root
+#    environment:
+#      TZ: Asia/Shanghai
+#    ports:
+#      - 26379:26379
+#    volumes:
+#      - ./volume/conf:/usr/local/etc/redis/conf
+#
+#  redis-slave1-sentinel:
+#    container_name: redis-slave1-sentinel
+#    image: redis:6.0
+#    command: redis-sentinel /usr/local/etc/redis/conf/redis-master-sentinel.conf
+#    restart: always
+#    user: root
+#    environment:
+#      TZ: Asia/Shanghai
+#    ports:
+#      - 26380:26379
+#    volumes:
+#      - ./volume/conf:/usr/local/etc/redis/conf
+#
+#  redis-slave2-sentinel:
+#    container_name: redis-slave2-sentinel
+#    image: redis:6.0
+#    command: redis-sentinel /usr/local/etc/redis/conf/redis-master-sentinel.conf
+#    restart: always
+#    user: root
+#    environment:
+#      TZ: Asia/Shanghai
+#    ports:
+#      - 26381:26379
+#    volumes:
+#      - ./volume/conf:/usr/local/etc/redis/conf

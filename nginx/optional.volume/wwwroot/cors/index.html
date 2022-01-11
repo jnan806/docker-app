@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="./jquery-1.8.2.js" ></script>
+
+<body>
+  <a href="javascript:void(0);" onclick="clickA()" >跳转cors</a>
+<body>
+
+<script>
+
+var clickA = function(){
+	$.ajax({
+             type: "GET",
+             url: "http://6.6.6.2:90/api-projectmanage/module/list",
+             data: {},
+             dataType: "json",
+             success: function(data){
+		console.info(data);
+	     }
+         });
+}
+
+</script>
+</html>

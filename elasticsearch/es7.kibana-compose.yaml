@@ -1,0 +1,36 @@
+version: '3.5'
+services:
+  elasticsearch:
+    container_name: es7.es
+    image: elasticsearch:7.14.2
+#    command: 
+    restart: always
+#    user: root
+    environment:
+      TZ: Asia/Shanghai
+      discovery.type: single-node
+      http.cors.enabled: "true"
+      http.cors.allow-origin: "*"
+      xpack.security.enabled: "false"
+    ports:
+      - 9200:9200
+    volumes:
+      - ./volume/data:/usr/share/elasticsearch/data
+      - ./volume/plugins:/usr/share/elasticsearch/plugins
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+
+  kibana:
+    container_name: es7.kibana
+    image: kibana:7.14.2
+#    command: 
+    restart: always
+#    user: root
+    environment:
+      TZ: Asia/Shanghai
+    ports:
+      - 5601:5601
+
+
